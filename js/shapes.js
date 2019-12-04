@@ -19,22 +19,60 @@ window.onload = function() {
     // equivalent set of six event listeners for your solutions. the first one is done for you.
 
     document.getElementById("hello").onclick = sayHello;
+    document.getElementById("rectangle").onclick = drawRectangle;
 }
 
 /*
- * Exercise 1.
+ *  Exercise 1 code
  */
 
-const sayHello = function() {
-    // write your exercise 1 code here
-};
+
+ const sayHello = function() {
+   let message = prompt("Message:");
+   while (message.length >= 50){
+     alert("Your message is too long. Please keep your message under 50 characters.");
+     message = prompt("Message:")
+   }
+     const theCanvas = document.getElementById('student-canvas-1');
+     const styling = theCanvas.getContext('2d');
+     styling.font = '48px sans-serif';
+     styling.clearRect(0, 0, theCanvas.width, theCanvas.height);
+     styling.strokeText(message, 30, 70, 994);
+ };
 
 /*
  * Exercise 2.
  */
 
 const drawRectangle = function() {
-    // write your exercise 2 code here
+    let width = prompt("Width: ");
+    let height = prompt("Height: ");
+    let x = prompt("X: ");
+    let y = prompt("Y: ");
+    while (width < 1 || width > theCanvas.width)  {
+      alert("Your width must be between 1 and 1024. ")
+      width = prompt("Width: ");
+    }
+
+    while (height < 1 || height > theCanvas.height)  {
+      alert("Your height must be between 1 and 1024. ")
+      height = prompt("Height: ");
+    }
+
+    while (x < 1 || x > theCanvas.width)  {
+      alert("Your x-coordinate must be between 1 and 1024. ")
+      x = prompt("X: ");
+    }
+
+    while (y < 1 || y > theCanvas.height)  {
+      alert("Your y-coordinate must be between 1 and 1024. ")
+      y = prompt("Y: ");
+    }
+
+    const theCanvas = document.getElementById('student-canvas-2');
+    const styling = theCanvas.getContext('2d');
+    styling.clearRect(0, 0, theCanvas.width, theCanvas.height);
+    styling.strokeText(x, y, width, height);
 };
 
 /*
