@@ -20,6 +20,7 @@ window.onload = function() {
 
     document.getElementById("hello").onclick = sayHello;
     document.getElementById("rectangle").onclick = drawRectangle;
+    document.getElementById("colored-rectangle").onclick = drawColoredRectangle;
 }
 
 /*
@@ -46,56 +47,74 @@ window.onload = function() {
  * Exercise 2.
  */
 
-const drawRectangle = function() {
-    let width = prompt("Width: ");
-    let height = prompt("Height: ");
-    let x = prompt("X: ");
-    let y = prompt("Y: ");
-    while (width < 1 || width > theCanvas.width)  {
-      alert("Your width must be between 1 and 1024. ");
-      width = prompt("Width: ");
-      height = prompt("Height: ");
-      x = prompt("X: ");
-      y = prompt("Y: ");
+ const drawRectangle = function() {
+   const canvas = document.getElementById('student-canvas-2');
+   const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  do {
+    var width = prompt("Width: ")
+    if (width == null) {
+      break;
     }
-
-    while (height < 1 || height > theCanvas.height)  {
-      alert("Your height must be between 1 and 1024. ")
-      width = prompt("Width: ");
-      height = prompt("Height: ");
-      x = prompt("X: ");
-      y = prompt("Y: ");
+    var height = prompt("Height: ")
+    if (height == null) {
+      break;
     }
-
-    while (x < 1 || x > theCanvas.width)  {
-      alert("Your x-coordinate must be between 1 and 1024. ")
-      width = prompt("Width: ");
-      height = prompt("Height: ");
-      x = prompt("X: ");
-      y = prompt("Y: ");
+    var x = prompt("X: ")
+    if (x == null) {
+      break;
+   }
+    var y = prompt("Y: ")
+    if (y == null) {
+      break;
+   }
+    if (width > canvas.width || width < 1) {
+      alert("Your width must be between 1 and 1024.")
     }
-
-    while (y < 1 || y > theCanvas.height)  {
-      alert("Your y-coordinate must be between 1 and 1024. ")
-      width = prompt("Width: ");
-      height = prompt("Height: ");
-      x = prompt("X: ");
-      y = prompt("Y: ");
+    if (height > canvas.height || height < 1) {
+      alert("Your height must be between 1 and 512.")
     }
+    if (x < 1 || x > 1024) {
+      alert("Your x-coordinate must be between 1 and 1024.")
+    }
+    if (y < 1 || y > 512) {
+      alert("Your y-coordinate must be between 1 and 512.")
+    }
+    if (isNaN(width) || isNaN(height) || isNaN(x) || isNaN(y)) {
+      alert("One of your values is not a number.")
+    }
+  } while (width > canvas.width || width < 1 || height > canvas.height || height < 1 || x < 1 || x > 1024 || y < 1 || y > 512 || isNaN(width) || isNaN(height) || isNaN(x) || isNaN(y))
 
-    var theCanvas = document.getElementById('student-canvas-2');
-    const styling = theCanvas.getContext('2d');
-    styling.clearRect(0, 0, theCanvas.width, theCanvas.height);
-    styling.strokeText(width, height, x, y);
-}
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.strokeRect(x, y, width, height);
+};
 
 /*
  * Exercise 3.
  */
 
-const drawColoredRectangle = function() {
-    // write your exercise 3 code here
-};
+ const drawColoredRectangle = function() {
+   const canvas = document.getElementById('student-canvas-3');
+   const ctx = canvas.getContext('2d');
+   ctx.clearRect(0, 0, canvas.width, canvas.height);
+   do {
+     var color = (prompt("Color: "))
+     if (color == null) {
+       break;
+     }
+     color = String(color)
+     var color_case = color.toLowerCase()
+     if (color_case != "green" && color_case != "black" && color_case != "blue" && color_case != "orange" && color_case != "purple" && color_case != "red" && color_case != "yellow") {
+       alert(color + " is not a supported color.")
+     }
+   } while (color_case != "green" && color_case != "black" && color_case != "blue" && color_case != "orange" && color_case != "purple" && color_case != "red" && color_case != "yellow")
+
+   if (color != null) {
+     ctx.fillStyle = color_case;
+     ctx.fillRect(10, 10, 100, 50);
+   }
+
+ };
 
 /*
  * Exercise 4.
