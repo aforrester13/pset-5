@@ -225,5 +225,89 @@ const drawFace = function() {
  */
 
 const drawPyramid = function() {
-    // write your exercise 5 code here
+  const canvas = document.getElementById("student-canvas-6");
+
+    const ctx = canvas.getContext("2d");
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    var distance = 0;
+
+    var height = 0;
+
+    var changeDistance = 0;
+
+    var adjustingHeight = 0;
+
+    var verify = 5;
+
+    var side;
+
+
+
+    do {
+
+        var side = prompt("Side: ")
+
+        if (side == null) {
+
+          break;
+
+        }
+
+        if (side < 1) {
+
+         alert("Your block size must be at least 1.")
+
+        }
+
+        else if (side > 100) {
+
+         alert("Your pyramid won't fit on the canvas")
+
+        }
+
+        else if (isNaN(side)) {
+
+         alert("Your block size is not a number.")
+
+        }
+
+      } while (isNaN(side) || side > 100 || side < 1)
+
+      distance = Number(distance);
+
+      height = Number(height);
+
+      side = Number(side);
+
+      for (x = 5; x > 0; x--) {
+
+      verify = x
+
+      while(verify >= 1) {
+
+       ctx.beginPath();
+
+       ctx.rect(10 + distance, (502 - side) - height, side,  side);
+
+       ctx.stroke();
+
+       ctx.closePath();
+
+       distance = distance + side
+
+       verify--
+
+      }
+
+       changeDistance++
+
+       distance = changeDistance * (1/2 * side)
+
+       adjustingHeight++
+
+       height = adjustingHeight * side
+
+      }
 };
