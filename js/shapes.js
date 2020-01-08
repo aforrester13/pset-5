@@ -32,8 +32,8 @@ window.onload = function() {
 
 const sayHello = function() {
   const canvas = document.getElementById('student-canvas-1');
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const context = canvas.getContext('2d');
+  context.clearRect(0, 0, canvas.width, canvas.height);
 
 
   do {
@@ -47,8 +47,8 @@ const sayHello = function() {
   } while(message.length > 50)
 
   if (message != null) {
-    ctx.font = "48px sans-serif";
-    ctx.strokeText(message, 30, 70, 994);
+    context.font = "48px sans-serif";
+    context.strokeText(message, 30, 70, 994);
   }
 };
 
@@ -60,6 +60,7 @@ const sayHello = function() {
    const canvas = document.getElementById('student-canvas-2');
    const context = canvas.getContext('2d');
   context.clearRect(0, 0, canvas.width, canvas.height);
+
   do {
     var width = prompt("Width: ")
     var height = prompt("Height: ")
@@ -102,8 +103,8 @@ const sayHello = function() {
 
 const drawColoredRectangle = function() {
   const canvas = document.getElementById('student-canvas-3');
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const context = canvas.getContext('2d');
+  context.clearRect(0, 0, canvas.width, canvas.height);
 
   do {
     var color = (prompt("Color: "))
@@ -118,8 +119,8 @@ const drawColoredRectangle = function() {
   } while (color_formatted != "GREEN" && color_formatted != "BLACK" && color_formatted != "BLUE" && color_formatted != "ORANGE" && color_formatted != "PURPLE" && color_formatted != "RED" && color_formatted != "YELLOW")
 
   if (color != null) {
-    ctx.fillStyle = color_formatted;
-    ctx.fillRect(10, 10, 100, 50);
+    context.fillStyle = color_formatted;
+    context.fillRect(10, 10, 100, 50);
   }
 };
 
@@ -226,8 +227,8 @@ const drawFace = function() {
 
 const drawPyramid = function() {
   const canvas = document.getElementById("student-canvas-6");
-    const ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const context = canvas.getContext("2d");
+    context.clearRect(0, 0, canvas.width, canvas.height);
 
     var distance = 0;
     var height = 0;
@@ -267,10 +268,10 @@ const drawPyramid = function() {
       verify = x
 
       while(verify >= 1) {
-       ctx.beginPath();
-       ctx.rect(10 + distance, (502 - side) - height, side,  side);
-       ctx.stroke();
-       ctx.closePath();
+       context.beginPath();
+       context.rect(10 + distance, (502 - side) - height, side,  side);
+       context.stroke();
+       context.closePath();
        distance = distance + side
        verify--
       }
